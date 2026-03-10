@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balasubramanian Chandrasekar — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --surface2: #1a2234;
+      --border: #1f2d45;
+      --accent: #4fffb0;
+      --accent2: #00c2ff;
+      --accent3: #ff6b6b;
+      --text: #e8edf5;
+      --text-muted: #6b7fa3;
+      --text-subtle: #3d4f6e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── GLOW BLOBS ── */
+    .glow-1 {
+      position: fixed; top: -200px; left: -200px; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(79,255,176,0.06) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+      animation: float1 12s ease-in-out infinite;
+    }
+    .glow-2 {
+      position: fixed; bottom: -200px; right: -100px; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,194,255,0.05) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+      animation: float2 15s ease-in-out infinite;
+    }
+    @keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(40px, 60px); } }
+    @keyframes float2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-40px, -40px); } }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto; padding: 0 32px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(10,14,23,0.85);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px; color: var(--accent);
+      letter-spacing: 0.08em; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--text-muted);
+      text-decoration: none; letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 64px;
+    }
+    .hero-inner {
+      padding: 80px 0;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--accent);
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: 1.05;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 22px);
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 600px;
+      font-weight: 300;
+    }
+    .hero-location {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--text-subtle);
+      letter-spacing: 0.1em;
+      margin-bottom: 48px;
+    }
+    .hero-cta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent); color: var(--bg);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(79,255,176,0.3);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 27px;
+      background: transparent; color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* ── SECTION HEADERS ── */
+    .section { padding: 100px 0; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--accent);
+      letter-spacing: 0.25em; text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      margin-bottom: 56px;
+      color: var(--text);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+    .skill-card {
+      background: var(--surface);
+      padding: 28px;
+      transition: background 0.2s;
+    }
+    .skill-card:hover { background: var(--surface2); }
+    .skill-category {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--accent2);
+      margin-bottom: 16px;
+    }
+    .skill-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .skill-card:hover .tag { border-color: var(--text-subtle); color: var(--text); }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 2px; }
+    .exp-item {
+      background: var(--surface);
+      border-left: 3px solid transparent;
+      padding: 36px 36px 36px 32px;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      cursor: default;
+    }
+    .exp-item:hover {
+      border-left-color: var(--accent);
+      background: var(--surface2);
+    }
+    .exp-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 24px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .exp-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px; color: var(--text);
+    }
+    .exp-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--text-subtle);
+      letter-spacing: 0.08em; white-space: nowrap;
+      padding-top: 4px;
+    }
+    .exp-company {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--accent2);
+      letter-spacing: 0.06em; margin-bottom: 20px;
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      color: var(--text-muted);
+      font-size: 14px; line-height: 1.8;
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--text-subtle);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+    }
+    .exp-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 0.1em;
+      padding: 4px 10px;
+      background: rgba(79,255,176,0.08);
+      border: 1px solid rgba(79,255,176,0.2);
+      color: var(--accent);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      gap: 2px;
+    }
+    .edu-card {
+      background: var(--surface);
+      padding: 36px;
+      transition: background 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .edu-card::before {
+      content: ''; position: absolute;
+      top: 0; right: 0;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle at top right, rgba(79,255,176,0.08), transparent 70%);
+    }
+    .edu-card:hover { background: var(--surface2); }
+    .edu-degree {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px; margin-bottom: 8px;
+    }
+    .edu-school {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--accent2);
+      letter-spacing: 0.05em; margin-bottom: 6px;
+    }
+    .edu-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--text-subtle); margin-bottom: 16px;
+    }
+    .edu-gpa {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+    }
+    .gpa-value { color: var(--accent); font-weight: 500; }
+    .gpa-label { color: var(--text-subtle); font-size: 11px; }
+
+    /* ── CONTACT ── */
+    #contact { padding-bottom: 120px; }
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 60px;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 40px; flex-wrap: wrap;
+    }
+    .contact-text h2 { margin-bottom: 12px; }
+    .contact-text p { color: var(--text-muted); max-width: 400px; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px; color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+    .contact-link:hover .contact-link-icon { border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--text-subtle);
+      position: relative; z-index: 1;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 0 20px; }
+      .contact-box { padding: 36px 24px; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glow-1"></div>
+<div class="glow-2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">bala.dev</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Software Engineer</div>
+      <h1>Balasubramanian<br /><em>Chandrasekar</em></h1>
+      <p class="hero-sub">Systems-focused engineer building reliable, high-performance software from embedded C++ daemons to full-stack web applications.</p>
+      <p class="hero-location">◈ Chicago, Illinois</p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn-primary">View Experience ↓</a>
+        <a href="https://www.linkedin.com/in/balasubramanian-chandrasekar-825a58147/" target="_blank" class="btn-outline">LinkedIn ↗</a>
+        <a href="mailto:sid231796@gmail.com" class="btn-outline">Email ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="wrap">
+    <div class="section-label">01 — Capabilities</div>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-category">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+          <span class="tag">C#</span>
+          <span class="tag">Python</span>
+          <span class="tag">Golang</span>
+          <span class="tag">TypeScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Test Frameworks</div>
+        <div class="skill-tags">
+          <span class="tag">GoogleTest</span>
+          <span class="tag">NUnit</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">DevOps &amp; Tooling</div>
+        <div class="skill-tags">
+          <span class="tag">Git CI/CD</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Bamboo</span>
+          <span class="tag">Azure DevOps</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Data &amp; Modelling</div>
+        <div class="skill-tags">
+          <span class="tag">YANG</span>
+          <span class="tag">XML</span>
+          <span class="tag">SQLite</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Operating Systems</div>
+        <div class="skill-tags">
+          <span class="tag">Linux (Yocto)</span>
+          <span class="tag">Ubuntu</span>
+          <span class="tag">Windows</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Standards &amp; Protocols</div>
+        <div class="skill-tags">
+          <span class="tag">NETCONF</span>
+          <span class="tag">SNMP</span>
+          <span class="tag">REST</span>
+          <span class="tag">XMLDSig</span>
+          <span class="tag">X.509</span>
+          <span class="tag">BRSKI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="wrap">
+    <div class="section-label">02 — Career</div>
+    <h2>Work Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-period">Feb 2023 — Present</div>
+        </div>
+        <div class="exp-company">Calix Inc · San Jose, CA</div>
+        <ul class="exp-bullets">
+          <li>Implemented a notification masking feature that significantly improved performance in high-noise, large-scale systems.</li>
+          <li>Contributed to YANG model development and served as the primary point of contact for a new product line, facilitating cross-functional collaboration.</li>
+          <li>Researched, prototyped, and proposed the integration of Sysrepo/Netopeer2 into existing NETCONF and CLI interfaces to enhance configuration management.</li>
+          <li>Developed a C++ code-generation tool that transformed XML schemas into structured internal database schemas and auto-generated C helper APIs.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-title">Software Engineering Assistant</div>
+          <div class="exp-period">Sep 2022 — Dec 2022</div>
+        </div>
+        <div class="exp-company">Calix Inc · San Jose, CA · Part-time</div>
+        <ul class="exp-bullets">
+          <li>Developed a prototype to accelerate daemon startup on Linux by modifying an existing YANG model and C-based daemon code, achieving 3–5× faster configuration load times.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-title">Software Engineer Intern</div>
+          <div class="exp-period">May 2022 — Aug 2022</div>
+        </div>
+        <div class="exp-company">Calix Inc · San Jose, CA</div>
+        <ul class="exp-bullets">
+          <li>Developed an XML diff tool in Python to automate customer documentation report generation, significantly reducing manual effort and improving efficiency.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-period">Jul 2018 — Aug 2021</div>
+        </div>
+        <div class="exp-company">Siemens Technology and Services · Bengaluru, India</div>
+        <ul class="exp-bullets">
+          <li>Solely developed and maintained a multi-threaded SNMP Agent as a Windows service application using C and C++, ensuring reliable network management.</li>
+          <li>Implemented RFC 3413 standards to enable SNMP-based notification delivery, enhancing network monitoring and alerting capabilities.</li>
+          <li>Implemented digital signing of device configuration files in C# using the XMLDSig standard, enhancing security and integrity of critical configurations.</li>
+          <li>Developed a full-stack web application with RESTful APIs — TypeScript frontend, C++ backend, and SQLite database.</li>
+          <li>Implemented RFC 7030 (EST) and draft RFC 8995 (BRSKI) in a web application for issuing and managing X.509 certificates.</li>
+        </ul>
+        <div class="exp-badge">★ Annual Excellence Award 2020 &nbsp;·&nbsp; 9× SPOT Awards</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-title">Software Engineer Intern</div>
+          <div class="exp-period">Jan 2018 — Jun 2018</div>
+        </div>
+        <div class="exp-company">Siemens Technology and Services · Bengaluru, India</div>
+        <ul class="exp-bullets">
+          <li>Assessed the feasibility of developing an SNMPv3 agent and built a working prototype.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <div class="wrap">
+    <div class="section-label">03 — Formation</div>
+    <h2>Education</h2>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="edu-degree">M.S. Computer Science</div>
+        <div class="edu-school">State University of New York at Buffalo</div>
+        <div class="edu-period">Aug 2021 — Feb 2023 · New York</div>
+        <div class="edu-gpa">
+          <span class="gpa-value">3.91 / 4.00</span>
+          <span class="gpa-label">GPA</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech Computer Science</div>
+        <div class="edu-school">SRM Institute of Science and Technology</div>
+        <div class="edu-period">Jul 2014 — May 2018 · Chennai, India</div>
+        <div class="edu-gpa">
+          <span class="gpa-value">9.12 / 10.0</span>
+          <span class="gpa-label">GPA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="wrap">
+    <div class="section-label">04 — Connect</div>
+    <div class="contact-box reveal">
+      <div class="contact-text">
+        <h2>Let's work<br /><em>together.</em></h2>
+        <p>Open to new opportunities. Reach out via email or connect on LinkedIn.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:sid231796@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          sid231796@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/balasubramanian-chandrasekar-825a58147/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          balasubramanian-chandrasekar
+        </a>
+        <a href="#" class="contact-link">
+          <div class="contact-link-icon">◈</div>
+          Chicago, Illinois
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built with HTML · Balasubramanian Chandrasekar © 2025
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Stagger skill cards
+  document.querySelectorAll('.skill-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 60}ms`;
+    card.classList.add('reveal');
+    observer.observe(card);
+  });
+</script>
+</body>
+</html>
