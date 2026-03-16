@@ -524,7 +524,7 @@
       <div class="hero-cta">
         <a href="#experience" class="btn-primary">View Experience ↓</a>
         <a href="https://www.linkedin.com/in/balasubramanian-chandrasekar-825a58147/" target="_blank" class="btn-outline">LinkedIn ↗</a>
-        <a href="mailto:sid231796@gmail.com" class="btn-outline">Email ↗</a>
+        <a href="/cdn-cgi/l/email-protection#83f0eae7b1b0b2b4bab5c3e4eee2eaefade0ecee" class="btn-outline">Email ↗</a>
       </div>
     </div>
   </div>
@@ -706,9 +706,9 @@
         <p>Open to new opportunities. Reach out via email or connect on LinkedIn.</p>
       </div>
       <div class="contact-links">
-        <a href="mailto:sid231796@gmail.com" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#13607a77212022242a2553747e727a7f3d707c7e" class="contact-link">
           <div class="contact-link-icon">✉</div>
-          sid231796@gmail.com
+          <span class="__cf_email__" data-cfemail="f3809a97c1c0c2c4cac5b3949e929a9fdd909c9e">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/balasubramanian-chandrasekar-825a58147/" target="_blank" class="contact-link">
           <div class="contact-link-icon">in</div>
@@ -820,7 +820,116 @@
             </div>
           </div>
         </div>
+
+        <div class="af">
+          <div class="af-label">References</div>
+          <ul>
+            <li>Turing, A. M. (1950). Computing Machinery and Intelligence. <em>Mind</em>, 59(236), 433–460.</li>
+            <li>McCarthy et al. (1955). A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence.</li>
+            <li>Newell, A. &amp; Simon, H. A. (1956). The Logic Theory Machine. <em>IRE Trans. on Information Theory</em>.</li>
+            <li>Weizenbaum, J. (1966). ELIZA. <em>Communications of the ACM</em>, 9(1), 36–45.</li>
+            <li>Campbell et al. (2002). Deep Blue. <em>Artificial Intelligence</em>, 134(1–2), 57–83.</li>
+            <li>Krizhevsky, Sutskever &amp; Hinton (2012). ImageNet Classification with Deep CNNs. <em>NeurIPS</em>.</li>
+            <li>Silver et al. (2016). Mastering Go with Deep Neural Networks and Tree Search. <em>Nature</em>, 529.</li>
+            <li>OpenAI (2023). GPT-4 Technical Report. arXiv:2303.08774.</li>
+          </ul>
+        </div>
+
+      </div>
     </div><!-- /artifact-01 -->
+
+    <!-- Artifact 02 -->
+    <div class="artifact-card reveal" id="artifact-02">
+      <div class="artifact-header" onclick="this.closest('.artifact-card').classList.toggle('open')">
+        <div>
+          <div class="artifact-title">ML vs Deep Learning — Real-World Applications</div>
+          <div class="artifact-meta">Artifact 02 &nbsp;·&nbsp; Comparative Analysis &nbsp;·&nbsp; Housing Prices &amp; Image Recognition</div>
+        </div>
+        <div class="artifact-toggle">+</div>
+      </div>
+      <div class="artifact-body">
+
+        <div class="af">
+          <div class="af-label">Title</div>
+          <div class="af-text">When to Use Machine Learning vs Deep Learning: A Real-World Comparative Analysis</div>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Introduction</div>
+          <div class="af-text">
+            Machine Learning and Deep Learning are often used interchangeably, but they are distinct tools with different strengths. Choosing the wrong approach for a given problem leads to unnecessary computational cost, poor accuracy, or both. This artifact explores two real-world examples — housing price prediction and image recognition — to illustrate when each paradigm is the right choice and, equally importantly, when it is not.
+          </div>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Description</div>
+          <div class="af-text">
+            The artifact presents a side-by-side comparison of two production-grade applications of AI: a classical ML use case (linear regression for housing prices) and a deep learning use case (CNNs for autonomous vehicle perception). For each, the analysis covers the real-world deployment context, justification for the chosen approach, and a reasoned argument for why the alternative paradigm would be unsuitable.
+          </div>
+          <ul style="margin-top:12px;">
+            <li><strong style="color:var(--text)">Example 1 — Housing Price Prediction (ML / Linear Regression)</strong>: Real estate platforms like Zillow estimate home values using features such as square footage, number of bedrooms, property age, and location. Linear regression models each feature's contribution to price as a linear relationship — e.g., larger square footage → higher price. Deep learning is unsuitable here because the dataset is structured and numerical, relationships are linear and interpretable, and adding a neural network adds computational cost without meaningful accuracy gain.</li>
+            <li style="margin-top:10px;"><strong style="color:var(--text)">Example 2 — Image Recognition (Deep Learning / CNN)</strong>: Autonomous vehicle systems at companies like Tesla and Waymo use Convolutional Neural Networks to identify road signs, pedestrians, obstructions, and other vehicles in real time from onboard camera feeds. CNNs excel here because images contain millions of pixels with complex spatial patterns (edges, textures, shapes) that CNNs can detect regardless of position in the frame. Traditional ML algorithms like logistic regression or SVMs are unsuitable because they cannot scale to the volume and dimensionality of image data, require manual feature engineering that becomes infeasible for unstructured data, and cannot automatically extract hierarchical visual features.</li>
+          </ul>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Objective</div>
+          <ul>
+            <li>Understand the practical distinction between classical Machine Learning and Deep Learning in applied settings</li>
+            <li>Identify the characteristics of a problem — data type, volume, structure, and relationships — that determine which approach is appropriate</li>
+            <li>Demonstrate that model selection is driven by problem constraints, not by recency or complexity of the technique</li>
+            <li>Build intuition for evaluating trade-offs between model simplicity, interpretability, computational cost, and accuracy</li>
+          </ul>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Process</div>
+          <ul>
+            <li><strong style="color:var(--text)">Problem Selection</strong> — Identified two well-known, production-deployed AI systems representing opposite ends of the ML/DL spectrum</li>
+            <li><strong style="color:var(--text)">Literature &amp; Industry Research</strong> — Reviewed how Zillow's Zestimate and Tesla/Waymo's perception stacks work at a high level</li>
+            <li><strong style="color:var(--text)">Comparative Framework</strong> — Structured the analysis around three questions for each example: What is the real-world use case? Why is this approach suitable? Why is the alternative not suitable?</li>
+            <li><strong style="color:var(--text)">Write-up</strong> — Synthesized findings into clear, non-jargon explanations grounded in the technical properties of each model class</li>
+          </ul>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Tools and Technologies Used</div>
+          <ul>
+            <li><strong style="color:var(--text)">Linear Regression</strong> — Classical ML algorithm; models the linear relationship between numerical input features and a continuous output variable (price)</li>
+            <li><strong style="color:var(--text)">Convolutional Neural Networks (CNN)</strong> — Deep learning architecture designed for spatial data; uses convolutional layers to detect local patterns such as edges and textures across image grids</li>
+            <li><strong style="color:var(--text)">Zillow Zestimate</strong> — Reference production system illustrating ML applied to real estate valuation</li>
+            <li><strong style="color:var(--text)">Tesla Autopilot / Waymo</strong> — Reference production systems illustrating CNN-based real-time object detection for autonomous driving</li>
+          </ul>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Value Proposition</div>
+          <div class="af-value-grid">
+            <div class="af-value-box">
+              <div class="af-value-box-label">Unique Value</div>
+              <p>Rather than describing ML and deep learning in the abstract, this artifact grounds the comparison in two systems that millions of people interact with daily. This makes the trade-offs — interpretability, compute cost, data requirements, feature engineering burden — concrete and memorable rather than theoretical.</p>
+            </div>
+            <div class="af-value-box">
+              <div class="af-value-box-label">Relevance</div>
+              <p>Model selection is one of the most consequential decisions in any ML project. This artifact directly builds the judgment needed to make that call: understanding why linear regression is the right tool for structured numerical data, and why CNNs are necessary for high-dimensional unstructured data, is foundational knowledge applicable across virtually every domain in the course.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="af">
+          <div class="af-label">References</div>
+          <ul>
+            <li>Zillow Group. (2023). <em>Zestimate Methodology</em>. Retrieved from https://www.zillow.com/zestimate/</li>
+            <li>LeCun, Y., Bengio, Y., &amp; Hinton, G. (2015). Deep learning. <em>Nature</em>, 521(7553), 436–444.</li>
+            <li>Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). ImageNet Classification with Deep Convolutional Neural Networks. <em>NeurIPS</em>.</li>
+            <li>Waymo. (2023). <em>Waymo Safety Report</em>. Retrieved from https://waymo.com/safety/</li>
+            <li>Murphy, K. P. (2012). <em>Machine Learning: A Probabilistic Perspective</em>. MIT Press.</li>
+            <li>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div><!-- /artifact-02 -->
 
   </div>
 </section>
@@ -834,7 +943,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
