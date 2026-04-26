@@ -1222,6 +1222,135 @@
       </div><!-- /artifact-body -->
     </div><!-- /artifact-04 -->
 
+
+    <!-- Artifact 05 -->
+    <div class="artifact-card reveal" id="artifact-05">
+      <div class="artifact-header" onclick="this.closest('.artifact-card').classList.toggle('open')">
+        <div>
+          <div class="artifact-title">Amazon AI Recruiting Bias &mdash; AI Incident Report</div>
+          <div class="artifact-meta">Artifact 05 &nbsp;&middot;&nbsp; Critical Analysis &nbsp;&middot;&nbsp; AI Ethics &amp; Fairness</div>
+        </div>
+        <div class="artifact-toggle">+</div>
+      </div>
+      <div class="artifact-body">
+
+        <div class="af">
+          <div class="af-label">Title</div>
+          <div class="af-text">Amazon&rsquo;s AI Recruiting Tool: A Case Study in Algorithmic Bias and the Risks of Unchecked Machine Learning</div>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Introduction</div>
+          <div class="af-text">
+            As AI systems are increasingly deployed in high-stakes decision-making contexts &mdash; hiring, lending, healthcare, criminal justice &mdash; the question of fairness and accountability becomes critical. This artifact examines a real AI incident that exemplifies what can go wrong when machine learning models are trained on historically biased data and deployed without sufficient oversight. The Amazon recruiting tool incident of 2018 is a landmark case that exposes how technically sophisticated systems can produce discriminatory outcomes at scale, and what obligations developers have to prevent this.
+          </div>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Description</div>
+          <div class="af-text">
+            In 2018, it was discovered that Amazon had developed an automated resume-screening tool that systematically penalized resumes containing indicators of female identity &mdash; such as the phrase &ldquo;women&rsquo;s chess club&rdquo; or attendance at all-female colleges. The model had been trained on a decade of historical hiring data in which the tech workforce was overwhelmingly male. As a result, the model learned to associate maleness with hiring success, effectively encoding gender discrimination into its scoring logic. Amazon scrapped the system after internal audits revealed the bias. The incident triggered widespread debate about AI fairness, transparency, and accountability in automated decision-making. The full critical analysis &mdash; covering algorithmic bias, transparency failures, and overreliance on historical data &mdash; is presented in the Finished Product section below.
+          </div>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Objective</div>
+          <ul>
+            <li>Analyze a real-world AI incident to understand how bias enters machine learning systems through training data</li>
+            <li>Examine the ethical, social, and legal implications of deploying biased AI in high-stakes decision-making contexts such as hiring</li>
+            <li>Identify concrete remediation strategies covering fairness constraints, transparency mechanisms, and debiasing approaches</li>
+            <li>Develop a personal framework for responsible AI development that prioritizes data quality, fairness audits, and continuous monitoring</li>
+          </ul>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Process</div>
+          <ul>
+            <li><strong style="color:var(--text)">Incident Selection</strong> &mdash; Identified the Amazon recruiting tool case from the AI Incident Database as a well-documented, consequential example of algorithmic bias with strong primary source coverage</li>
+            <li><strong style="color:var(--text)">Source Review</strong> &mdash; Cross-referenced the AI Incident Database entry with the original Reuters investigative report to validate facts and establish timeline</li>
+            <li><strong style="color:var(--text)">Critical Analysis</strong> &mdash; Structured the analysis around three core failure dimensions: algorithmic bias and discrimination, lack of transparency, and overreliance on historical data &mdash; with dedicated root-cause reasoning and proposed solutions for each</li>
+          </ul>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Tools and Technologies Used</div>
+          <ul>
+            <li><strong style="color:var(--text)">AI Incident Database (incidentdatabase.ai)</strong> &mdash; Primary source for incident documentation; used to identify and structure the case</li>
+            <li><strong style="color:var(--text)">Reuters Investigative Report (2018)</strong> &mdash; Used to validate the incident details and provide journalistic verification of the facts</li>
+          </ul>
+        </div>
+
+        <div class="af">
+          <div class="af-label">Value Proposition</div>
+          <div class="af-value-grid">
+            <div class="af-value-box">
+              <div class="af-value-box-label">Unique Value</div>
+              <p>Rather than examining algorithmic bias in the abstract, this report grounds the analysis in a specific, documented failure at one of the world&rsquo;s most technically capable companies. This makes the lesson concrete: even the most sophisticated ML teams can produce discriminatory systems when the ethical foundations of data quality and fairness are not prioritized. The three-part failure framework (bias, transparency, data overreliance) is reusable across any AI deployment context.</p>
+            </div>
+            <div class="af-value-box">
+              <div class="af-value-box-label">Relevance</div>
+              <p>This case directly connects to course topics including supervised learning, training data, model evaluation, and bias. It also introduces fairness constraints, transparency requirements, and the model lifecycle &mdash; topics increasingly central to responsible AI practice. As engineers building ML systems, understanding how bias propagates through training pipelines is as important as understanding the algorithms themselves.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="af">
+          <div class="af-label">References</div>
+          <ul>
+            <li>AI Incident Database. (2018). <em>Incident #37: Amazon AI recruiting tool showed bias against women.</em> Retrieved from https://incidentdatabase.ai/cite/37/</li>
+            <li>Dastin, J. (2018, October 10). <em>Insight: Amazon scraps secret AI recruiting tool that showed bias against women.</em> Reuters. Retrieved from https://www.reuters.com/article/world/insight-amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK0AG/</li>
+          </ul>
+        </div>
+
+        <!-- FINISHED PRODUCT -->
+        <div class="af" style="margin-top:32px;">
+          <div class="af-label" style="color:var(--text);border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:0;">Finished Product</div>
+          <div style="margin-top:20px;background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--accent3);padding:28px 32px;line-height:1.9;color:var(--text-muted);font-size:14px;">
+
+            <p style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:4px;">Incident Summary</p>
+            <p>In 2018, it was discovered that the recruiting tool developed by Amazon to automate the screening of resumes systematically penalized resumes containing indicators of a candidate being female. Since the tool was trained on historical hiring data where the tech force was dominated by male candidates, the model learned and got ingrained with a bias to favor male candidates. Amazon eventually scrapped the system, but this incident raised awareness and concerns about fairness, accountability, and the risks associated with deploying AI models for important decision-making. This incident also exposes how machine learning models can exacerbate and reinforce existing biases if not trained with the right data.</p>
+
+            <div style="margin-top:28px;">
+              <p style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Critical Analysis</p>
+
+              <div style="display:flex;flex-direction:column;gap:16px;">
+
+                <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:18px 22px;">
+                  <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">1. Bias and Discrimination Caused by the Algorithm</div>
+                  <p style="margin-bottom:8px;"><strong style="color:var(--text)">Why:</strong> The bias of the algorithm directly disadvantaged a protected group and went against the concept of equal employment opportunities.</p>
+                  <p style="margin-bottom:8px;"><strong style="color:var(--text)">Implications:</strong> The model learned from biased historical data and propagated the bias rather than learning what objective qualifications the hired candidates had. This revealed how AI systems are never neutral &mdash; they always amplify existing inequalities. This is serious because decisions like hiring affect livelihoods and long-term career opportunities, transforming a technical glitch into a systemic fairness concern.</p>
+                  <p><strong style="color:var(--text)">Solution:</strong> Implementing fairness constraints and checks during and after model training can alleviate these issues. Training with data that inherently reflects diversity would reduce the recurrence of these discriminatory outcomes.</p>
+                </div>
+
+                <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent2);padding:18px 22px;">
+                  <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:10px;">2. Lack of Transparency</div>
+                  <p style="margin-bottom:8px;"><strong style="color:var(--text)">Why:</strong> It wasn&rsquo;t immediately apparent that there was a bias in the system, highlighting how opaque these AI systems can be.</p>
+                  <p style="margin-bottom:8px;"><strong style="color:var(--text)">Implications:</strong> With recruiters relying on these systems, the bias would not have been apparent. They had no understanding of how decisions were made, and as a result, could not challenge unfair outcomes. It also makes accountability vague &mdash; nobody can really explain the decisions that were taken.</p>
+                  <p><strong style="color:var(--text)">Solution:</strong> Make documentation of model behavior mandatory. This would enable stakeholders to understand the decisions and question them if necessary.</p>
+                </div>
+
+                <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent3);padding:18px 22px;">
+                  <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent3);margin-bottom:10px;">3. Overreliance on Historical Data</div>
+                  <p style="margin-bottom:8px;"><strong style="color:var(--text)">Why:</strong> The root cause of this issue is trusting historical data blindly without accounting for the bias it might contain, and assuming it will reliably predict future outcomes.</p>
+                  <p style="margin-bottom:8px;"><strong style="color:var(--text)">Implications:</strong> Historical data can reflect societal biases rather than objective truth. Training on this data makes AI models accentuate and propagate these biases &mdash; an underlying ethical issue, since data is never neutral or free of bias.</p>
+                  <p><strong style="color:var(--text)">Solution:</strong> Use debiasing strategies at the model training, post-processing, and continuous monitoring phases of the model lifecycle &mdash; from using representative data to conducting fairness audits during ongoing monitoring.</p>
+                </div>
+
+              </div>
+            </div>
+
+            <div style="margin-top:24px;background:var(--surface);border:1px solid var(--border);padding:20px 24px;">
+              <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:12px;">Reflection</p>
+              <p>I initially assumed that AI systems perform poorly mainly because of model design or implementation issues. Even though the smartest minds at Amazon would have worked on making the model itself as technically sound as possible, the AI ended up being biased purely because of the data itself. This shows that even technically excellent products can perform poorly if data quality suffers. It doesn&rsquo;t matter how much data one has access to &mdash; it&rsquo;s the <strong style="color:var(--text)">quality</strong> of the training data that matters most.</p>
+              <p style="margin-top:12px;">This analysis will influence my future approach to building AI models. I would prioritize data quality above all, and incorporate fairness checks and ethical review processes throughout the model development lifecycle. I would ensure datasets are examined thoroughly and models are continuously audited to prevent unintended biases.</p>
+            </div>
+
+          </div>
+        </div><!-- /finished product -->
+
+      </div><!-- /artifact-body -->
+    </div><!-- /artifact-05 -->
+
   </div>
 </section>
 <!-- =============================================================
